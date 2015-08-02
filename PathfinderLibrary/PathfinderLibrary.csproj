@@ -44,7 +44,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="BaseClass.cs" />
     <Compile Include="BaseFeature.cs" />
-    <Compile Include="Globals.cs" />
+    <Compile Include="Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
