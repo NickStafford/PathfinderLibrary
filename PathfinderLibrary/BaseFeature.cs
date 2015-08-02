@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PathfinderLibrary
 {
-          class BaseFeature
-          {
-          }
+        public class BaseFeature
+        {
+        }
 }

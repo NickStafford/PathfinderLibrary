@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace PathfinderLibrary
 {
-    public abstract class BaseRace
+    public class BaseRace
     {
         public string Name { get; set; }
+
+        public BaseRace(string inputName)
+        {
+            Name = inputName;
+        }
 
         public override string ToString()
         {
