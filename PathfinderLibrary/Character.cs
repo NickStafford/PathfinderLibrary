@@ -10,7 +10,7 @@ namespace PathfinderLibrary
     {
         #region Fields
         private int[] _alignment = new int[2]; //e.g. 0,0 = Lawful Good. 2,1 = Chaotic Neutral
-        public Dictionary<string, int> _statsDictionary = new Dictionary<string, int>();
+        public Dictionary<string, int> Stats = new Dictionary<string, int>();
         #endregion
 
         #region Properties
@@ -34,12 +34,18 @@ namespace PathfinderLibrary
             Classes[0] = initialClass;
 
             //Initialise the values of the characters statistics.
-            _statsDictionary.Add("STR", 10);
-            _statsDictionary.Add("DEX", 10);
-            _statsDictionary.Add("CON", 10);
-            _statsDictionary.Add("INT", 10);
-            _statsDictionary.Add("WIS", 10);
-            _statsDictionary.Add("CHA", 10);
+            Stats.Add("STR", 10);
+            Stats.Add("DEX", 10);
+            Stats.Add("CON", 10);
+            Stats.Add("INT", 10);
+            Stats.Add("WIS", 10);
+            Stats.Add("CHA", 10);
+        }
+
+        public getStatModifier(string statName) {
+            int statLevel = Stats[statName];
+
+            return Math.Floor((statLevel - 10) / 2);
         }
     }
 }
