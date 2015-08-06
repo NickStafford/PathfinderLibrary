@@ -8,7 +8,12 @@ namespace PathfinderLibrary
 {
     public class Environment
     {
-        public static BaseClass[] ClassesArray(string classesConfigPath)
+        #region Fields
+        private Dictionary<string, BaseClass> _knownClasses;
+        private Dictionary<string, BaseRace> _knownRaces;
+        #endregion
+
+        public BaseClass[] ClassesArray(string classesConfigPath)
         {
             //TODO: Initialise a global array of all the classes from a file.
             
@@ -17,7 +22,7 @@ namespace PathfinderLibrary
             //This should be called by the program using this library to create the array of classes to build an environment.
         }
 
-        public static BaseRace[] RacesArray(string racesConfigPath)
+        public BaseRace[] initialiseRacesArray(string racesConfigPath)
         {
             //TODO: Initialise a global array of all the races from a file.
 
@@ -26,7 +31,7 @@ namespace PathfinderLibrary
             return new BaseRace[0];
         }
 
-        public static BaseFeature[] FeaturesArray(string featuresConfigPath)
+        public BaseFeature[] FeaturesArray(string featuresConfigPath)
         {
             //TODO: Initialise a global array of all the features from a file.
 

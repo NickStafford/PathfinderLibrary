@@ -11,6 +11,7 @@ namespace PathfinderLibrary
         #region Fields
         private int[] _alignment = new int[2]; //e.g. 0,0 = Lawful Good. 2,1 = Chaotic Neutral
         public Dictionary<string, int> Stats = new Dictionary<string, int>();
+        public Dictionary<string, BaseClass> Classes = new Dictionary<string,BaseClass>();
         #endregion
 
         #region Properties
@@ -19,7 +20,12 @@ namespace PathfinderLibrary
         public int Age { get; set; }
         public BaseRace Race { get; set; }
         public string Name { get; set; }
-        public BaseClass[] Classes { get; set; }
+
+
+        //The 'Environment' object that this character was created in, this limits the context that the character is active in, including available Classes and Races.
+        public Environment Scope { get; private set;} 
+
+        //The characters alignment.
         public int[] Alignment
         {
             get { return _alignment; }
