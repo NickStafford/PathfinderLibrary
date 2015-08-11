@@ -48,10 +48,14 @@ namespace PathfinderLibrary
             Stats.Add("CHA", 10);
         }
 
-        public getStatModifier(string statName) {
-            int statLevel = Stats[statName];
+        //<summary>
+        //Return the modifier of one of the six basic stats based on the stat name given as a string input.
+        //</summary>
+        public int getStatModifier(string input)
+        {
+            double raw = (Stats[input] - 10)/2.0;
 
-            return Math.Floor((statLevel - 10) / 2);
+            return (int) Math.Floor(raw);
         }
     }
 }
