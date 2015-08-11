@@ -57,5 +57,23 @@ namespace PathfinderLibrary
 
             return (int) Math.Floor(raw);
         }
+
+        //<summary>
+        //Retrieves the miscellaneous effects that are currently modifying the characters initiative.
+        //</summary>
+        public int InitiativeMiscModifier()
+        {
+            //TODO: Implement this. Will require me to start keeping track of gear and equipment.
+            //This should return the SUM of the initiative modifiers based on equipped or active items.
+            return 0;
+        }
+
+        //<summary>
+        //Returns the characters initiative modifier based on dexterity and miscellaneous modifiers.
+        //</summary>
+        public int InitiativeMod()
+        {
+            return getStatModifier("DEX") + InitiativeMiscModifier();
+        }
     }
 }
