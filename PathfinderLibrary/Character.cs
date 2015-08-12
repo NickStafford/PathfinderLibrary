@@ -16,7 +16,19 @@ namespace PathfinderLibrary
 
         #region Properties
         public int Size { get; set; }
-        public char Gender  { get; set; }
+        public char Gender  { get;
+            set
+            {
+                if (value == 'M' || value == 'F')
+                {
+                    Gender = value;
+                }
+                else
+                {
+                    throw new Exception("Unkown gender value passed to character object.");
+                }
+            }
+        }
         public int Age { get; set; }
         public BaseRace Race { get; set; }
         public string Name { get; set; }
@@ -25,12 +37,18 @@ namespace PathfinderLibrary
         //The 'Environment' object that this character was created in, this limits the context that the character is active in, including available Classes and Races.
         public Environment Scope { get; private set;} 
 
-        //The characters alignment.
-        public int[] Alignment
-        {
-            get { return _alignment; }
-            set { _alignment = value; }
-        }
+        //<summary>
+        //The Characters alignment as a a 2 dimensional coordinate. This maps to the following table:
+        //
+        //  Lawful Good     |  Neutral Good | Chaotic Good
+        //  ----------------|---------------|---------
+        //  Lawful Neutral  |    Neutral    | Chaotic Neutral
+        //  ----------------|---------------|---------
+        //  Lawful Evil     |  Neutral Evil | Chaotic Evil
+        //
+        //  e.g. Lawful Good would be (0,0).
+        //</summary>
+        public Point Alignment { get; set; }
         #endregion
 
         public Character(string inputName, BaseRace inputRace, BaseClass initialClass)
