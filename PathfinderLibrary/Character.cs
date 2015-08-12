@@ -10,9 +10,8 @@ namespace PathfinderLibrary
     public class Character
     {
         #region Fields
-        private int[] _alignment = new int[2]; //e.g. 0,0 = Lawful Good. 2,1 = Chaotic Neutral
-        public Dictionary<string, int> Stats = new Dictionary<string, int>();
-        public Dictionary<string, BaseClass> Classes = new Dictionary<string,BaseClass>();
+        private Dictionary<string, int> _stats = new Dictionary<string, int>();
+        public Dictionary<BaseClass, int> Classes = new Dictionary<BaseClass,int>();
         #endregion
 
         #region Properties
@@ -34,6 +33,10 @@ namespace PathfinderLibrary
         public BaseRace Race { get; set; }
         public string Name { get; set; }
 
+        public IReadOnlyDictionary<string, int> Stats
+        {
+            get { return _stats; }
+        }
 
         //The 'Environment' object that this character was created in, this limits the context that the character is active in, including available Classes and Races.
         public Environment Scope { get; private set;} 
@@ -59,18 +62,18 @@ namespace PathfinderLibrary
             Classes[0] = initialClass;
 
             //Initialise the values of the characters statistics.
-            Stats.Add("STR", 10);
-            Stats.Add("DEX", 10);
-            Stats.Add("CON", 10);
-            Stats.Add("INT", 10);
-            Stats.Add("WIS", 10);
-            Stats.Add("CHA", 10);
+            _stats.Add("STR", 10);
+            _stats.Add("DEX", 10);
+            _stats.Add("CON", 10);
+            _stats.Add("INT", 10);
+            _stats.Add("WIS", 10);
+            _stats.Add("CHA", 10);
         }
 
         //<summary>
         //Return the modifier of one of the six basic stats based on the stat name given as a string input.
         //</summary>
-        public int getStatModifier(string input)
+        public int GetStatModifier(string input)
         {
             double raw = (Stats[input] - 10)/2.0;
 
@@ -92,7 +95,9 @@ namespace PathfinderLibrary
         //</summary>
         public int InitiativeMod()
         {
-            return getStatModifier("DEX") + InitiativeMiscModifier();
+            return GetStatModifier("DEX") + InitiativeMiscModifier();
         }
+
+        public int 
     }
 }
